@@ -10,6 +10,8 @@
 
 #define IOS_VERSION_NEWER_OR_EQUAL_TO(iOSV) ([[[UIDevice currentDevice] systemVersion] compare:(iOSV) options:NSNumericSearch] != NSOrderedAscending)
 
+#define DROP_IMAGE_NAME @"drop.png"
+
 @interface Const : NSObject
 
 @end

@@ -10,6 +10,4 @@
 
 @implementation ImageObject
 
-@synthesize position;
-
 @end

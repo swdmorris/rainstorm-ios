@@ -10,6 +10,20 @@
 
 @implementation Droplet
 
+@synthesize speed, direction;
+
+- (id)initWithSpeed:(float)newSpeed
+{
+    self = [super init];
+    
+    self.speed = newSpeed;
+    self.direction = CGPointMake(1, -1);
+    self.frame = CGRectMake(0, 0, 1, 1);
+    self.backgroundColor = [UIColor blueColor];
+    
+    return self;
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -18,14 +32,5 @@
     }
     return self;
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end

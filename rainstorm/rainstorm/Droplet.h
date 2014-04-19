@@ -10,4 +10,7 @@
 
 @interface Droplet : ImageObject
 
+@property (nonatomic) float speed;
+@property (nonatomic) CGPoint direction;
+
 @end

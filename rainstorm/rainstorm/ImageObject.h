@@ -10,6 +10,4 @@
 
 @interface ImageObject : UIImageView
 
-@property (nonatomic) CGPoint position;
-
 @end
