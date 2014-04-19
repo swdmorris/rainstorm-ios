@@ -12,7 +12,7 @@
 #import "Droplet.h"
 
 @interface GameVC ()
-@property (weak, nonatomic) IBOutlet UIImageView *ballImageView;
+@property (weak, nonatomic) IBOutlet Ball *ball;
 @property (weak, nonatomic) IBOutlet UIImageView *paddleImageView;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
 
@@ -20,22 +20,34 @@
 
 @property (strong, nonatomic) NSMutableArray *drops;
 @property (strong, nonatomic) NSMutableArray *droplets;
-@property (strong, nonatomic) Ball *ball;
 
 @end
 
 @implementation GameVC
 
-@synthesize ballImageView, paddleImageView, startButton, timer;
+@synthesize ball, paddleImageView, startButton, timer, droplets, drops;
 
-float TIMER_INTERVAL = 0.01f;
+float TIMER_INTERVAL = 0.1f;
 float INITIAL_VELOCITY = 1.0;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    [self populateDrops];
+    self.ball.layer.cornerRadius = self.ball.frame.size.width / 2;
+}
+
+- (void)populateDrops
+{
+    int rows = 5, columns = 20, paddingX = 30, paddingY = 5, heightOfRows = 50;
+    for (int i = 0; i < columns; i++) {
+        for (int j = 0; j < rows; j++) {
+            Drop *drop = [[Drop alloc] initWithFrame:CGRectMake(paddingX + ((self.view.frame.size.width - 2 * paddingX) / (float) columns) * (float) i, paddingY + (heightOfRows / (float) rows) * (float) j, 12, 15)];
+            [self.drops addObject:drop];
+            [self.view addSubview:drop];
+        }
+    }
 }
 
 #pragma mark- Game Logic
@@ -59,7 +71,7 @@ float INITIAL_VELOCITY = 1.0;
 
 - (void)moveBall
 {
-    [self.ball setCenter:CGPointMake(self.ball.direction.x * self.ball.speed, self.ball.direction.y * self.ball.speed)];
+    [self.ball setCenter:CGPointMake(self.ball.center.x + self.ball.direction.x * self.ball.speed, self.ball.center.y + self.ball.direction.y * self.ball.speed)];
     
     // check within x bounds
     if (self.ball.center.x > self.view.frame.size.width)

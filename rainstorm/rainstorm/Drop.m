@@ -17,6 +17,8 @@
     if (self) {
         // Initialization code
         [self setImage:[UIImage imageNamed:DROP_IMAGE_NAME]];
+        self.contentMode = UIViewContentModeScaleAspectFill;
+        self.clipsToBounds = YES;
     }
     return self;
 }

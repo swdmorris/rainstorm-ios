@@ -32,6 +32,9 @@
 		24F5C53D190242EE001C5704 /* Ball.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F5C53C190242EE001C5704 /* Ball.m */; };
 		24F5C54019024304001C5704 /* Drop.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F5C53F19024304001C5704 /* Drop.m */; };
 		24F5C54319024320001C5704 /* Droplet.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F5C54219024320001C5704 /* Droplet.m */; };
+		24F5C54519024BE7001C5704 /* dropLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 24F5C54419024BE7001C5704 /* dropLarge.png */; };
+		24F5C54A19024C6C001C5704 /* drop.png in Resources */ = {isa = PBXBuildFile; fileRef = 24F5C54819024C6C001C5704 /* drop.png */; };
+		24F5C54B19024C6C001C5704 /* drop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 24F5C54919024C6C001C5704 /* drop@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +88,9 @@
 		24F5C53F19024304001C5704 /* Drop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Drop.m; sourceTree = "<group>"; };
 		24F5C54119024320001C5704 /* Droplet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Droplet.h; sourceTree = "<group>"; };
 		24F5C54219024320001C5704 /* Droplet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Droplet.m; sourceTree = "<group>"; };
+		24F5C54419024BE7001C5704 /* dropLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dropLarge.png; sourceTree = "<group>"; };
+		24F5C54819024C6C001C5704 /* drop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drop.png; sourceTree = "<group>"; };
+		24F5C54919024C6C001C5704 /* drop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "drop@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +246,9 @@
 		2413BC1219023D2D00725AF6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				24F5C54419024BE7001C5704 /* dropLarge.png */,
+				24F5C54819024C6C001C5704 /* drop.png */,
+				24F5C54919024C6C001C5704 /* drop@2x.png */,
 				2413BBE719023C7500725AF6 /* Images.xcassets */,
 			);
 			name = Images;
@@ -322,7 +331,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2413BBE319023C7500725AF6 /* Main_iPad.storyboard in Resources */,
+				24F5C54519024BE7001C5704 /* dropLarge.png in Resources */,
+				24F5C54A19024C6C001C5704 /* drop.png in Resources */,
 				2413BBE819023C7500725AF6 /* Images.xcassets in Resources */,
+				24F5C54B19024C6C001C5704 /* drop@2x.png in Resources */,
 				2413BBE019023C7500725AF6 /* Main_iPhone.storyboard in Resources */,
 				2413BBD719023C7500725AF6 /* InfoPlist.strings in Resources */,
 			);

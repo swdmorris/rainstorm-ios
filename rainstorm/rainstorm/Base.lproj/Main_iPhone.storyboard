@@ -41,9 +41,10 @@
                                 <rect key="frame" x="135" y="474" width="50" height="10"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KdU-vI-NP4" customClass="CircleImageView">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KdU-vI-NP4" customClass="Ball">
                                 <rect key="frame" x="145" y="436" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u62-FP-EkB">
                                 <rect key="frame" x="137" y="237" width="46" height="30"/>
@@ -61,7 +62,7 @@
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="04O-Yy-dPs"/>
                     <connections>
-                        <outlet property="ballImageView" destination="KdU-vI-NP4" id="6kk-Zf-VG5"/>
+                        <outlet property="ball" destination="KdU-vI-NP4" id="2pc-Oa-SOP"/>
                         <outlet property="paddleImageView" destination="7yi-4k-aLB" id="Aeg-Ah-OcM"/>
                         <outlet property="startButton" destination="u62-FP-EkB" id="sJz-r5-1OX"/>
                     </connections>
