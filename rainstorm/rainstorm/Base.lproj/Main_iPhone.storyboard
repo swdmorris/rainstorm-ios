@@ -40,18 +40,10 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7yi-4k-aLB">
                                 <rect key="frame" x="135" y="474" width="50" height="10"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="10" id="T5b-kf-e1z"/>
                                     <constraint firstAttribute="width" constant="50" id="jbz-R4-TZx"/>
-                                </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KdU-vI-NP4" customClass="Ball">
-                                <rect key="frame" x="145" y="436" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="WNa-oz-G6C"/>
-                                    <constraint firstAttribute="width" constant="30" id="lB0-4f-B69"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u62-FP-EkB">
@@ -70,15 +62,12 @@
                             <constraint firstAttribute="centerY" secondItem="u62-FP-EkB" secondAttribute="centerY" id="76A-52-9Eg"/>
                             <constraint firstAttribute="centerX" secondItem="u62-FP-EkB" secondAttribute="centerX" id="Dym-QL-9ba"/>
                             <constraint firstAttribute="bottom" secondItem="7yi-4k-aLB" secondAttribute="bottom" constant="20" id="OqO-6C-HsK"/>
-                            <constraint firstAttribute="centerX" secondItem="KdU-vI-NP4" secondAttribute="centerX" id="TYf-X5-maB"/>
                             <constraint firstAttribute="centerX" secondItem="7yi-4k-aLB" secondAttribute="centerX" id="eg7-5A-wEc"/>
-                            <constraint firstAttribute="bottom" secondItem="KdU-vI-NP4" secondAttribute="bottom" constant="38" id="klw-UE-3zI"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="04O-Yy-dPs"/>
                     <connections>
-                        <outlet property="ball" destination="KdU-vI-NP4" id="2pc-Oa-SOP"/>
                         <outlet property="paddleImageView" destination="7yi-4k-aLB" id="Aeg-Ah-OcM"/>
                         <outlet property="startButton" destination="u62-FP-EkB" id="sJz-r5-1OX"/>
                     </connections>

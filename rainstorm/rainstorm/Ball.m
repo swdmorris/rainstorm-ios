@@ -18,6 +18,7 @@
     if (self) {
         // Initialization code
         self.backgroundColor = [UIColor blackColor];
+        self.layer.cornerRadius = self.frame.size.width / 2;
     }
     return self;
 }

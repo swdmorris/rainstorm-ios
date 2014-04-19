@@ -12,12 +12,12 @@
 #import "Droplet.h"
 
 @interface GameVC ()
-@property (weak, nonatomic) IBOutlet Ball *ball;
-@property (weak, nonatomic) IBOutlet UIImageView *paddleImageView;
+@property (strong, nonatomic) IBOutlet UIImageView *paddleImageView;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
 
 @property (strong, nonatomic) NSTimer *timer;
 
+@property (strong, nonatomic) Ball *ball;
 @property (strong, nonatomic) NSMutableArray *drops;
 @property (strong, nonatomic) NSMutableArray *droplets;
 
@@ -35,7 +35,7 @@ float INITIAL_VELOCITY = 1.0;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self populateDrops];
-    self.ball.layer.cornerRadius = self.ball.frame.size.width / 2;
+    [self setupBall];
 }
 
 - (void)populateDrops
@@ -50,6 +50,12 @@ float INITIAL_VELOCITY = 1.0;
             [self.view addSubview:drop];
         }
     }
+}
+
+- (void)setupBall
+{
+    self.ball = [[Ball alloc] initWithFrame:CGRectMake(50, self.view.frame.size.height - 200, 30, 30)];
+    [self.view addSubview:self.ball];
 }
 
 #pragma mark- Game Logic
@@ -85,16 +91,22 @@ float INITIAL_VELOCITY = 1.0;
 
 - (void)moveDroplets
 {
+    NSMutableArray *dropletsToRemove = [[NSMutableArray alloc] init];
     for (Droplet *droplet in self.droplets) {
-        [droplet setCenter:CGPointMake(droplet.direction.x * droplet.speed, droplet.direction.y * droplet.speed)];
+        [droplet setCenter:CGPointMake(droplet.center.x + droplet.direction.x * droplet.speed, droplet.center.y + droplet.direction.y * droplet.speed)];
         
         if (droplet.center.x < 0
             || droplet.center.x > self.view.frame.size.width
             || droplet.center.y > self.view.frame.size.height) {
             [droplet removeFromSuperview];
-            [self.droplets removeObject:droplet];
+            [dropletsToRemove addObject:droplet];
             NSLog(@"DROPLET DONE");
         }
+    }
+    
+    for (Droplet *droplet in dropletsToRemove) {
+        [droplet removeFromSuperview];
+        [self.droplets removeObject:droplet];
     }
 }
 
@@ -106,8 +118,7 @@ float INITIAL_VELOCITY = 1.0;
         CGFloat yDist = (drop.center.y - self.ball.center.y);
         CGFloat distanceSq = (xDist * xDist) + (yDist * yDist);
         if (distanceSq < self.ball.frame.size.width * 2) {
-            Droplet *droplet = [[Droplet alloc] init];
-            droplet.center = drop.center;
+            Droplet *droplet = [[Droplet alloc] initWithFrame:CGRectMake(drop.center.x, drop.center.y, 2, 2)];
             [self.view addSubview:droplet];
             [self.droplets addObject:droplet];
             [dropsToRemove addObject:drop];

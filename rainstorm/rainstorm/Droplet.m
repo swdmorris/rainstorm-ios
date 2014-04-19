@@ -14,12 +14,20 @@
 
 - (id)initWithFrame:(CGRect)frame
 {
-    self = [super initWithFrame:CGRectMake(self.frame.origin.x, self.frame.origin.y, 1, 1)];
+    self = [super initWithFrame:CGRectMake(self.frame.origin.x, self.frame.origin.y, 3, 3)];
     if (self) {
         // Initialization code
         self.speed = 1.0;
-        self.direction = CGPointMake(1, -1);
-        self.backgroundColor = [UIColor blueColor];
+        CGFloat azim = ((CGFloat)rand() / RAND_MAX) * 2.0 - 1.0;
+        self.direction = CGPointMake(azim, 1 - fabs(azim));
+        
+        CGFloat redLevel    = rand() / (float) RAND_MAX;
+        CGFloat greenLevel  = rand() / (float) RAND_MAX;
+        CGFloat blueLevel   = rand() / (float) RAND_MAX;
+        self.backgroundColor = [UIColor colorWithRed: redLevel
+                                                 green: greenLevel
+                                                  blue: blueLevel
+                                                 alpha: 1.0];
     }
     return self;
 }
