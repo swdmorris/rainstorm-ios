@@ -12,23 +12,14 @@
 
 @synthesize speed, direction;
 
-- (id)initWithSpeed:(float)newSpeed
-{
-    self = [super init];
-    
-    self.speed = newSpeed;
-    self.direction = CGPointMake(1, -1);
-    self.frame = CGRectMake(0, 0, 1, 1);
-    self.backgroundColor = [UIColor blueColor];
-    
-    return self;
-}
-
 - (id)initWithFrame:(CGRect)frame
 {
-    self = [super initWithFrame:frame];
+    self = [super initWithFrame:CGRectMake(self.frame.origin.x, self.frame.origin.y, 1, 1)];
     if (self) {
         // Initialization code
+        self.speed = 1.0;
+        self.direction = CGPointMake(1, -1);
+        self.backgroundColor = [UIColor blueColor];
     }
     return self;
 }

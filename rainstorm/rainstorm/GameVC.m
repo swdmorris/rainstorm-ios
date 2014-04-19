@@ -27,7 +27,7 @@
 
 @synthesize ball, paddleImageView, startButton, timer, droplets, drops;
 
-float TIMER_INTERVAL = 0.1f;
+float TIMER_INTERVAL = 0.01f;
 float INITIAL_VELOCITY = 1.0;
 
 - (void)viewDidLoad
@@ -40,6 +40,8 @@ float INITIAL_VELOCITY = 1.0;
 
 - (void)populateDrops
 {
+    self.drops = [[NSMutableArray alloc] init];
+    self.droplets = [[NSMutableArray alloc] init];
     int rows = 5, columns = 20, paddingX = 30, paddingY = 5, heightOfRows = 50;
     for (int i = 0; i < columns; i++) {
         for (int j = 0; j < rows; j++) {
@@ -59,8 +61,6 @@ float INITIAL_VELOCITY = 1.0;
 
 - (void)timerFired
 {
-    NSLog(@"TIMER FIRED");
-    
     [self moveBall];
     [self moveDroplets];
     [self checkForNewDroplets];
@@ -100,6 +100,7 @@ float INITIAL_VELOCITY = 1.0;
 
 - (void)checkForNewDroplets
 {
+    NSMutableArray *dropsToRemove = [[NSMutableArray alloc] init];
     for (Drop *drop in self.drops) {
         CGFloat xDist = (drop.center.x - self.ball.center.x);
         CGFloat yDist = (drop.center.y - self.ball.center.y);
@@ -109,8 +110,13 @@ float INITIAL_VELOCITY = 1.0;
             droplet.center = drop.center;
             [self.view addSubview:droplet];
             [self.droplets addObject:droplet];
-            [self.drops removeObject:drop];
+            [dropsToRemove addObject:drop];
         }
+    }
+    
+    for (Drop *drop in dropsToRemove) {
+        [drop removeFromSuperview];
+        [self.drops removeObject:drop];
     }
 }
 
@@ -125,7 +131,7 @@ float INITIAL_VELOCITY = 1.0;
 - (IBAction)startButtonPressed
 {
     self.ball.speed = INITIAL_VELOCITY;
-    self.ball.direction = CGPointMake(self.ball.speed * 0.612, -self.ball.speed * 0.612);
+    self.ball.direction = CGPointMake(1.0, -1.5);
     [self startTimer];
     [self.startButton setHidden:YES];
 }
