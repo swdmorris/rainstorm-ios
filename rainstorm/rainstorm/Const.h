@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define IOS_VERSION_NEWER_OR_EQUAL_TO(iOSV) ([[[UIDevice currentDevice] systemVersion] compare:(iOSV) options:NSNumericSearch] != NSOrderedAscending)
+
 @interface Const : NSObject
 
 @end
