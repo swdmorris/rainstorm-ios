@@ -14,7 +14,7 @@
 
 - (id)initWithFrame:(CGRect)frame
 {
-    self = [super initWithFrame:CGRectMake(self.frame.origin.x, self.frame.origin.y, 3, 3)];
+    self = [super initWithFrame:CGRectMake(frame.origin.x, frame.origin.y, 3, 3)];
     if (self) {
         // Initialization code
         self.speed = 1.0;

@@ -87,6 +87,13 @@ float INITIAL_VELOCITY = 1.0;
     // check within y bounds
     if (self.ball.center.y < 0)
         self.ball.direction = CGPointMake(self.ball.direction.x, abs(self.ball.direction.y));
+    // check if hit paddle
+    CGFloat bottomOfBall = self.ball.center.y + self.ball.frame.size.height / 2.0;
+    if (bottomOfBall > self.paddleImageView.frame.origin.y
+        && bottomOfBall < self.paddleImageView.frame.origin.y + self.paddleImageView.frame.size.height
+        && self.ball.center.x > self.paddleImageView.frame.origin.x
+        && self.ball.center.x < self.paddleImageView.frame.origin.x + self.paddleImageView.frame.size.width)
+        self.ball.direction = CGPointMake(self.ball.direction.x, -abs(self.ball.direction.y));
 }
 
 - (void)moveDroplets
@@ -100,7 +107,6 @@ float INITIAL_VELOCITY = 1.0;
             || droplet.center.y > self.view.frame.size.height) {
             [droplet removeFromSuperview];
             [dropletsToRemove addObject:droplet];
-            NSLog(@"DROPLET DONE");
         }
     }
     
