@@ -1,16 +1,13 @@
 //
-//  UserData.h
+//  Drop.h
 //  rainstorm
 //
 //  Created by Spencer Morris on 4/19/14.
 //  Copyright (c) 2014 Lakeview Labs. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "ImageObject.h"
 
-@interface UserData : NSObject
-
-+ (UserData *)instance;
-+ (void)clearInstance;
+@interface Drop : ImageObject
 
 @end

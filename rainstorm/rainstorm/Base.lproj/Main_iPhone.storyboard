@@ -25,20 +25,46 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
-        <!--View Controller-->
+        <!--GameVC-->
         <scene sceneID="tcc-K7-lUl">
             <objects>
-                <viewController id="F2a-7r-0Vd" sceneMemberID="viewController">
+                <viewController id="F2a-7r-0Vd" customClass="GameVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RhN-hM-uaM"/>
                         <viewControllerLayoutGuide type="bottom" id="hCd-lz-u9x"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="COX-lE-ttB">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7yi-4k-aLB">
+                                <rect key="frame" x="135" y="474" width="50" height="10"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KdU-vI-NP4" customClass="CircleImageView">
+                                <rect key="frame" x="145" y="436" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u62-FP-EkB">
+                                <rect key="frame" x="137" y="237" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="startButtonPressed" destination="F2a-7r-0Vd" eventType="touchUpInside" id="Jq8-6d-kYx"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="04O-Yy-dPs"/>
+                    <connections>
+                        <outlet property="ballImageView" destination="KdU-vI-NP4" id="6kk-Zf-VG5"/>
+                        <outlet property="paddleImageView" destination="7yi-4k-aLB" id="Aeg-Ah-OcM"/>
+                        <outlet property="startButton" destination="u62-FP-EkB" id="sJz-r5-1OX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Oi-6O-hmH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
