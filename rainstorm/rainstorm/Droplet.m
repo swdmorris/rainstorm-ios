@@ -18,8 +18,9 @@
     if (self) {
         // Initialization code
         self.speed = 1.0;
-        CGFloat azim = ((CGFloat)rand() / RAND_MAX) * 2.0 - 1.0;
-        self.direction = CGPointMake(azim, 1 - fabs(azim));
+        CGFloat speedX = ((CGFloat)rand() / RAND_MAX) * 1.0 - 0.5; // -0.5 to 0.5
+        CGFloat speedY = ((CGFloat)rand() / RAND_MAX) * 2.0 - 0.5; // -0.5 to 1.5
+        self.direction = CGPointMake(speedX, speedY);
         
         CGFloat redLevel    = rand() / (float) RAND_MAX;
         CGFloat greenLevel  = rand() / (float) RAND_MAX;

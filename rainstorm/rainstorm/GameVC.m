@@ -13,11 +13,11 @@
 #import <CoreMotion/CoreMotion.h>
 
 @interface GameVC ()
-@property (strong, nonatomic) IBOutlet UIImageView *paddleImageView;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
 
 @property (strong, nonatomic) NSTimer *timer;
 
+@property (strong, nonatomic) UIImageView *paddleImageView;
 @property (strong, nonatomic) Ball *ball;
 @property (strong, nonatomic) NSMutableArray *drops;
 @property (strong, nonatomic) NSMutableArray *droplets;
@@ -32,14 +32,15 @@
 @synthesize ball, paddleImageView, startButton, timer, droplets, drops;
 
 float TIMER_INTERVAL = 0.01f;
-float INITIAL_VELOCITY = 1.0;
+float INITIAL_VELOCITY = 2.0;
+int NUM_DROPLETS_PER_DROP = 5;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self populateDrops];
-    [self setupBall];
+    [self setupBallAndPaddle];
     [self setupTiltMeasurement];
 }
 
@@ -57,10 +58,14 @@ float INITIAL_VELOCITY = 1.0;
     }
 }
 
-- (void)setupBall
+- (void)setupBallAndPaddle
 {
     self.ball = [[Ball alloc] initWithFrame:CGRectMake(50, self.view.frame.size.height - 200, 30, 30)];
     [self.view addSubview:self.ball];
+    
+    self.paddleImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2.0, self.view.frame.size.height - 80, 50, 10)];
+    self.paddleImageView.backgroundColor = [UIColor darkGrayColor];
+    [self.view addSubview:self.paddleImageView];
 }
 
 - (void)setupTiltMeasurement
@@ -78,6 +83,11 @@ float INITIAL_VELOCITY = 1.0;
              {
                  CGFloat y = gyroData.rotationRate.y;
                  self.paddleImageView.center = CGPointMake(self.paddleImageView.center.x + (3.0 * y), self.paddleImageView.center.y);
+                 // check boundaries
+                 if (self.paddleImageView.center.x > self.view.frame.size.width)
+                     self.paddleImageView.center = CGPointMake(self.view.frame.size.width, self.paddleImageView.center.y);
+                 else if (self.paddleImageView.center.x < 0)
+                     self.paddleImageView.center = CGPointMake(0, self.paddleImageView.center.y);
              }];
         }
     } else {
@@ -152,9 +162,13 @@ float INITIAL_VELOCITY = 1.0;
         CGFloat yDist = (drop.center.y - self.ball.center.y);
         CGFloat distanceSq = (xDist * xDist) + (yDist * yDist);
         if (distanceSq < self.ball.frame.size.width * 2) {
-            Droplet *droplet = [[Droplet alloc] initWithFrame:CGRectMake(drop.center.x, drop.center.y, 2, 2)];
-            [self.view addSubview:droplet];
-            [self.droplets addObject:droplet];
+            
+            for (int i = 0; i < NUM_DROPLETS_PER_DROP; i++) {
+                Droplet *droplet = [[Droplet alloc] initWithFrame:CGRectMake(drop.center.x, drop.center.y, 2, 2)];
+                [self.view addSubview:droplet];
+                [self.droplets addObject:droplet];
+            }
+            
             [dropsToRemove addObject:drop];
         }
     }
@@ -180,6 +194,8 @@ float INITIAL_VELOCITY = 1.0;
     [self startTimer];
     [self.startButton setHidden:YES];
 }
+
+#pragma mark- Animations
 
 #pragma mark- End of life cycle
 
