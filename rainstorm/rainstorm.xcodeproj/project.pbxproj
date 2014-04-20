@@ -27,6 +27,7 @@
 		247BEF6B19023E0C00FF4FA3 /* CustomVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 247BEF6A19023E0C00FF4FA3 /* CustomVC.m */; };
 		247BEF6E19023E2B00FF4FA3 /* LandingPageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 247BEF6D19023E2B00FF4FA3 /* LandingPageVC.m */; };
 		247BEF7119023EAD00FF4FA3 /* GameVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 247BEF7019023EAD00FF4FA3 /* GameVC.m */; };
+		24CE9DAD19036A8B003E16FA /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24CE9DAC19036A8A003E16FA /* CoreMotion.framework */; };
 		24F5C53719024016001C5704 /* CircleImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F5C53619024016001C5704 /* CircleImageView.m */; };
 		24F5C53A190242B9001C5704 /* ImageObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F5C539190242B9001C5704 /* ImageObject.m */; };
 		24F5C53D190242EE001C5704 /* Ball.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F5C53C190242EE001C5704 /* Ball.m */; };
@@ -78,6 +79,7 @@
 		247BEF6D19023E2B00FF4FA3 /* LandingPageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandingPageVC.m; sourceTree = "<group>"; };
 		247BEF6F19023EAD00FF4FA3 /* GameVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameVC.h; sourceTree = "<group>"; };
 		247BEF7019023EAD00FF4FA3 /* GameVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameVC.m; sourceTree = "<group>"; };
+		24CE9DAC19036A8A003E16FA /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		24F5C53519024016001C5704 /* CircleImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleImageView.h; sourceTree = "<group>"; };
 		24F5C53619024016001C5704 /* CircleImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleImageView.m; sourceTree = "<group>"; };
 		24F5C538190242B9001C5704 /* ImageObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageObject.h; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24CE9DAD19036A8B003E16FA /* CoreMotion.framework in Frameworks */,
 				2413BBCF19023C7500725AF6 /* CoreGraphics.framework in Frameworks */,
 				2413BBD119023C7500725AF6 /* UIKit.framework in Frameworks */,
 				2413BBCD19023C7500725AF6 /* Foundation.framework in Frameworks */,
@@ -140,6 +143,7 @@
 		2413BBCB19023C7500725AF6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				24CE9DAC19036A8A003E16FA /* CoreMotion.framework */,
 				2413BBCC19023C7500725AF6 /* Foundation.framework */,
 				2413BBCE19023C7500725AF6 /* CoreGraphics.framework */,
 				2413BBD019023C7500725AF6 /* UIKit.framework */,

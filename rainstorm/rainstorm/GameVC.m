@@ -10,6 +10,7 @@
 #import "Ball.h"
 #import "Drop.h"
 #import "Droplet.h"
+#import <CoreMotion/CoreMotion.h>
 
 @interface GameVC ()
 @property (strong, nonatomic) IBOutlet UIImageView *paddleImageView;
@@ -20,6 +21,9 @@
 @property (strong, nonatomic) Ball *ball;
 @property (strong, nonatomic) NSMutableArray *drops;
 @property (strong, nonatomic) NSMutableArray *droplets;
+
+@property (strong, nonatomic) NSOperationQueue *deviceQueue;
+@property (strong, nonatomic) CMMotionManager *motionManager;
 
 @end
 
@@ -36,6 +40,7 @@ float INITIAL_VELOCITY = 1.0;
     // Do any additional setup after loading the view.
     [self populateDrops];
     [self setupBall];
+    [self setupTiltMeasurement];
 }
 
 - (void)populateDrops
@@ -56,6 +61,28 @@ float INITIAL_VELOCITY = 1.0;
 {
     self.ball = [[Ball alloc] initWithFrame:CGRectMake(50, self.view.frame.size.height - 200, 30, 30)];
     [self.view addSubview:self.ball];
+}
+
+- (void)setupTiltMeasurement
+{
+    self.motionManager = [[CMMotionManager alloc] init];
+    
+    //Gyroscope
+    if([self.motionManager isGyroAvailable])
+    {
+        if([self.motionManager isGyroActive] == NO) {
+            [self.motionManager setGyroUpdateInterval:TIMER_INTERVAL];
+            
+            [self.motionManager startGyroUpdatesToQueue:[NSOperationQueue mainQueue]
+                                            withHandler:^(CMGyroData *gyroData, NSError *error)
+             {
+                 CGFloat y = gyroData.rotationRate.y;
+                 self.paddleImageView.center = CGPointMake(self.paddleImageView.center.x + (3.0 * y), self.paddleImageView.center.y);
+             }];
+        }
+    } else {
+        NSLog(@"Gyroscope not Available!");
+    }
 }
 
 #pragma mark- Game Logic
@@ -101,6 +128,7 @@ float INITIAL_VELOCITY = 1.0;
     NSMutableArray *dropletsToRemove = [[NSMutableArray alloc] init];
     for (Droplet *droplet in self.droplets) {
         [droplet setCenter:CGPointMake(droplet.center.x + droplet.direction.x * droplet.speed, droplet.center.y + droplet.direction.y * droplet.speed)];
+        droplet.direction = CGPointMake(droplet.direction.x, droplet.direction.y + 0.02);
         
         if (droplet.center.x < 0
             || droplet.center.x > self.view.frame.size.width
